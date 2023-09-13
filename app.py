@@ -28,7 +28,14 @@ def about():  # put application's code here
 @app.route('/create', methods=['POST', 'GET'])
 def create():
     if request.method == 'POST':
+        title = request.form['title']
+        price = request.form['price']
 
+        item = Item(title=title, price=price)
+        try:
+            db.session.add(item)
+            db.session.commit()
+            
     else:
         return render_template('create.html')
 
