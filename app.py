@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -35,7 +35,10 @@ def create():
         try:
             db.session.add(item)
             db.session.commit()
-            
+            return redirect('/')
+        except:
+            return 'ERROR'
+
     else:
         return render_template('create.html')
 
