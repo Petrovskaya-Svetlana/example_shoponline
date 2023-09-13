@@ -6,6 +6,12 @@ app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///shop.db'
 db = SQLAlchemy
 
 
+class Item(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    isActive = db.Column(db.Boolean, nullable=True)
+    
 
 @app.route('/')
 def index():  # put application's code here
