@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///shop.db'
-db = SQLAlchemy
+db = SQLAlchemy(app)
 
 
 class Item(db.Model):
@@ -11,7 +11,8 @@ class Item(db.Model):
     title = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Integer, nullable=False)
     isActive = db.Column(db.Boolean, nullable=True)
-    
+    # text = db.Column(db.Text, nullable=False)
+
 
 @app.route('/')
 def index():  # put application's code here
